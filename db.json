@@ -1,0 +1,34 @@
+{
+  "alunos": [
+    {
+      "id": "0",
+      "nome": "João",
+      "matricula": "7289437894",
+      "media": "9,9"
+    },
+    {
+      "id": "1",
+      " nome": "Barbara",
+      "matricula": "9987656512",
+      "media": "10"
+    },
+    {
+      " id": "2",
+      "nome": "Felipe",
+      "matricula": "2876765765",
+      "media": "5"
+    },
+    {
+      "id": "3",
+      "nome": "Cleiton",
+      "matricula": "123123459",
+      "media": "4"
+    },
+    {
+      "id": "5",
+      "nome": "Cleiton",
+      "matricula": "123123459",
+      "media": "2"
+    }
+  ]
+}
