@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{   \r\n    \"id\": \"5\",\r\n    \"nome\": \"Cleiton\",\r\n    \"matricula\": \"123123459\",\r\n    \"media\": \"4\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -58,15 +58,25 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": \"5\",\r\n        \"nome\": \"Cleiton\",\r\n        \"matricula\": \"123123459\",\r\n        \"media\": \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/alunos",
+					"raw": "http://localhost:3000/alunos/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"alunos"
+						"alunos",
+						"5"
 					]
 				}
 			},
@@ -77,15 +87,25 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/alunos",
+					"raw": "http://localhost:3000/alunos/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"alunos"
+						"alunos",
+						"5"
 					]
 				}
 			},
