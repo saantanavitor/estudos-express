@@ -5,6 +5,10 @@ const port = 8080;
 const app = express();
 app.use(express.json());
 
+app.listen(port, () => {
+    console.log("listening on port " + port);
+});
+
 const alunos = [
     {   
         id: "0",
@@ -25,26 +29,33 @@ const alunos = [
         media: "5",
     },
 ];
-const filtroNome = alunos.filter(aluno => aluno.nome === "João");
-const filtroMedia = alunos.filter(aluno => aluno.media >= 6);
 
+const filtroNome = (paramNome) => 
+alunos.filter(aluno => aluno.nome === paramNome)
 
-app.listen(port, () => {
-    console.log("listening on port " + port);
-});
+const filtroMedia = (paramMedia) => 
+alunos.filter(aluno => aluno.media >= paramMedia)
+
 
 app.get("/alunos", morgan('combined'), (req, res) => {           // Listagem de alunos
-    try{
-    res.json(alunos);
+    try{   
+        let filteredAlunos = alunos;
+        if(req.query.nome) {
+        filteredAlunos = filtroNome(req.query.nome);
+        }
+        if(req.query.media) {
+            filteredAlunos = filtroMedia(req.query.media);
+            }
+        return res.status(201).send({ alunos: filteredAlunos });
     } catch (err) {
-        return res.status(500).send({message: "Lista de alunos invalida."});
+        return res.status(500).send({message: "Invalido"});
     }
 });
 
 app.post("/alunos/", morgan('combined'), (req, res) => {         // Criação de novo cadastro de aluno
     try {
-    const { nome, matricula, media } = req.body;
-    const novoAluno = { nome: nome, matricula: matricula, media: media };
+    const { id, nome, matricula, media } = req.body;
+    const novoAluno = { id: id, nome: nome, matricula: matricula, media: media };
     alunos.push(novoAluno);
     res.status(201).json({ message: "Usuário adicionado" });
     }
