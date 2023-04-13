@@ -1,4 +1,5 @@
 const express = require ("express");
+const morgan = require ("morgan");
 const port = 8080;
 
 const app = express();
@@ -32,7 +33,7 @@ app.listen(port, () => {
     console.log("listening on port " + port);
 });
 
-app.get("/alunos", (req, res) => {           // Listagem de alunos
+app.get("/alunos", morgan('combined'), (req, res) => {           // Listagem de alunos
     try{
     res.json(alunos);
     } catch (err) {
@@ -40,7 +41,7 @@ app.get("/alunos", (req, res) => {           // Listagem de alunos
     }
 });
 
-app.post("/alunos/", (req, res) => {         // Criação de novo cadastro de aluno
+app.post("/alunos/", morgan('combined'), (req, res) => {         // Criação de novo cadastro de aluno
     try {
     const { nome, matricula, media } = req.body;
     const novoAluno = { nome: nome, matricula: matricula, media: media };
@@ -52,7 +53,7 @@ app.post("/alunos/", (req, res) => {         // Criação de novo cadastro de al
     }
 });
 
-app.put("/alunos/", (req, res) => {         // Atualização da média
+app.put("/alunos/", morgan('combined'), (req, res) => {         // Atualização da média
     try {
         const {nome, media} = req.body;
         alunos.map ( aluno => 
@@ -67,7 +68,7 @@ app.put("/alunos/", (req, res) => {         // Atualização da média
         }
     });
 
-app.delete("/alunos/", (req, res) => {        // Deletar aluno da base de dados
+app.delete("/alunos/", morgan('combined'), (req, res) => {        // Deletar aluno da base de dados
    try {
     const { id } = req.body;
     const deletar = { id: id };
