@@ -48,12 +48,11 @@ app.get("/alunos", morgan('combined'), (req, res) => {           // Listagem de 
         let filteredAlunos = alunos;
         if(req.query.nome) {
         filteredAlunos = filtroNome(req.query.nome);
-        adicionarDB();
         }
         if(req.query.media) {
             filteredAlunos = filtroMedia(req.query.media);
-            adicionarDB();
             }
+            adicionarDB();
         return res.status(201).send({ alunos: filteredAlunos });
     } catch (err) {
         return res.status(500).send({message: "Invalido"});
@@ -78,10 +77,9 @@ app.put("/alunos/", morgan('combined'), (req, res) => {         // Atualização
         const {nome, media} = req.body;
         alunos.map ( aluno => 
             { if (aluno.nome === nome){
-                aluno.media = media;
-                adicionarDB();
+                aluno.media = media; 
             }});
-        
+            adicionarDB();
         return res.status(201).json({ message: "Usuário atualizado", alunos });
         }
         catch (err) {
