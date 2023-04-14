@@ -1,8 +1,7 @@
-const express = require ("express");
-const morgan = require ("morgan");
-const fs = require ("fs");
-
-const port = 8080;
+const express = require ("express");  // Importando o express
+const morgan = require ("morgan");   // Importando o morgan
+const fs = require ("fs");           // Importando o fs
+const port = 8080;                  // Definição da porta
 
 const app = express();
 app.use(express.json());
